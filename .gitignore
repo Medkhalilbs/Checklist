@@ -1,0 +1,38 @@
+Frontend/.DS_Store
+Frontend/.thumbs.db
+Frontend/node_modules
+backend/node_modules
+
+# Quasar core related directories
+Frontend/.quasar
+Frontend/dist
+Frontend/quasar.config.*.temporary.compiled*
+
+# Cordova related directories and files
+Frontend/src-cordova/node_modules
+Frontend/src-cordova/platforms
+Frontend/src-cordova/plugins
+Frontend/src-cordova/www
+
+# Capacitor related directories and files
+Frontend/src-capacitor/www
+Frontend/src-capacitor/node_modules
+
+# BEX related directories and files
+Frontend/src-bex/www
+Frontend/src-bex/js/core
+
+# Log files
+Frontend/npm-debug.log*
+Frontend/yarn-debug.log*
+Frontend/yarn-error.log*
+
+# Editor directories and files
+Frontend/.idea
+Frontend/*.suo
+Frontend/*.ntvs*
+Frontend/*.njsproj
+Frontend/*.sln
+
+# local .env files
+.env.local*
