@@ -8,7 +8,7 @@ declare module '@vue/runtime-core' {
   }
 }
 
-const api = axios.create({ baseURL: 'https://api.example.com' });
+const api = axios.create({ baseURL: '127.0.0.1:5000' });
 
 export default boot(({ app }) => {
   // Ajouter l'intercepteur JWT
