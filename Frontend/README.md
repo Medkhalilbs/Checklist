@@ -1,6 +1,6 @@
-# Quasar App (frontend)
+# Frontend checklist app (frontend)
 
-A Quasar Project
+Frontend checklist app
 
 ## Install the dependencies
 ```bash

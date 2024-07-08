@@ -1,42 +1,63 @@
 <template>
   <q-page class="flex flex-center">
-    <q-card>
+    <q-card class="q-pa-md" style="width: 400px">
       <q-card-section>
         <div class="text-h6">Login</div>
       </q-card-section>
 
       <q-card-section>
-        <q-input v-model="username" label="Username" />
-        <q-input v-model="password" label="Password" type="password" />
-      </q-card-section>
+        <q-form @submit="onSubmit" ref="form">
+          <q-input
+            v-model="username"
+            label="Username"
+            outlined
+            clearable
+            dense
+            lazy-rules
+            :rules="[val => !!val || 'Field is required']"
+          />
+          <q-input
+            v-model="password"
+            label="Password"
+            type="password"
+            outlined
+            clearable
+            dense
+            lazy-rules
+            :rules="[val => !!val || 'Field is required']"
+          />
 
-      <q-card-actions align="right">
-        <q-btn label="Login" color="primary" @click="login" />
-      </q-card-actions>
+          <q-btn
+            type="submit"
+            label="Login"
+            color="primary"
+            class="full-width q-mt-md"
+          />
+        </q-form>
+      </q-card-section>
     </q-card>
   </q-page>
 </template>
 
-<script>
-import { mapActions } from 'vuex';
+<script setup>
+import { ref } from 'vue';
 
-export default {
-  data() {
-    return {
-      username: '',
-      password: '',
-    };
-  },
-  methods: {
-    ...mapActions('auth', ['login']),
-    async login() {
-      try {
-        await this.login({ username: this.username, password: this.password });
-        this.$router.push('/');
-      } catch (error) {
-        this.$q.notify({ type: 'negative', message: 'Login failed' });
-      }
-    },
-  },
+const username = ref('');
+const password = ref('');
+const form = ref(null);
+
+const onSubmit = () => {
+  form.value.validate().then(success => {
+    if (success) {
+      // Handle login logic here
+      console.log('Form submitted', { username: username.value, password: password.value });
+    }
+  });
 };
 </script>
+
+<style scoped>
+.full-width {
+  width: 100%;
+}
+</style>

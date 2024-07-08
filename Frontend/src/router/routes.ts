@@ -1,22 +1,19 @@
-const routes = [
+import { RouteRecordRaw } from 'vue-router';
+import MainLayout from 'layouts/MainLayout.vue';
+import HomePage from 'pages/HomePage.vue';
+import LoginPage from 'pages/LoginPage.vue';
+import ChecklistsPage from 'pages/ChecklistsPage.vue';
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: MainLayout,
     children: [
-      { path: '', component: () => import('pages/ChecklistsPage.vue') }
+      { path: '', component: HomePage },
+      { path: 'login', component: LoginPage },
+      { path: 'checklists', component: ChecklistsPage, meta: { requiresAuth: true } }
     ]
   },
-  {
-    path: '/login',
-    component: () => import('pages/LoginPage.vue')
-  },
-  {
-    path: '/admin',
-    component: () => import('pages/Admin.vue'),
-    meta: { requiresAuth: true, requiresAdmin: true }
-  },
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/Error404.vue')
